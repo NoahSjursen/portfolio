@@ -1,0 +1,82 @@
+/* login.css */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-container {
+    width: 90%; /* Adjusted width for mobile */
+    max-width: 400px; /* Adjusted max-width */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px; /* Increased padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px; /* Adjusted margin */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px; /* Adjusted margin */
+    font-size: 16px; /* Adjusted font size */
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 12px; /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px; /* Adjusted font size */
+}
+
+.btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 12px 24px; /* Adjusted padding */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px; /* Adjusted font size */
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+/* main.css */
+
+h2 {
+    color: #333;
+    font-size: 24px; /* Adjusted font size */
+    margin-bottom: 20px; /* Adjusted margin */
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px; /* Adjusted font size */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* CSS for mobile */
+@media only screen and (max-width: 600px) {
+    .form-container {
+        min-width: auto; /* Adjusted min-width for mobile */
+    }
+}

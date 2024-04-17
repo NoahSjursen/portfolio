@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scuba Diver Logbook</title>
+    <!-- Include your CSS files here -->
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Include Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Your Firebase configuration -->
+    <script src="js/firebaseConfig.js"></script>
+    <script src="js/auth.js"></script>
+    <!-- Include separate JavaScript files -->
+    <script src="js/register.js"></script>
+    <script src="js/login.js"></script>
+</head>
+
+<body>
+    <!-- Login form -->
+    <div class="auth-container" id="loginContainer">
+        <div class="form-container">
+            <h2>Login</h2>
+            <form id="loginForm" onsubmit="event.preventDefault(); loginUser();">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn login-btn">Login</button>
+            </form>
+            <!-- Link to switch to registration form -->
+            <a href="#" id="showRegisterFormBtn" onclick="showRegisterForm()">Create Account</a>
+        </div>
+    </div>
+
+    <!-- Registration form (Initially hidden) -->
+    <div class="auth-container" id="registerContainer" style="display: none;">
+        <div class="form-container">
+            <h2>Register</h2>
+            <form id="registerForm" onsubmit="event.preventDefault(); registerUser();">
+                <div class="input-group">
+                    <label for="registerUsername">Username</label>
+                    <input type="text" id="registerUsername" required>
+                </div>
+                <div class="input-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="input-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <button type="submit" class="btn register-btn">Register</button>
+            </form>
+            <!-- Link to switch back to login form -->
+            <a href="#" onclick="showLoginForm()">Back to Login</a>
+        </div>
+    </div>
+    
+    <!-- Include your JavaScript files here -->
+    <!-- Your JavaScript links -->
+    <script>
+        // Function to show registration form and hide login form
+        function showRegisterForm() {
+            document.getElementById("loginContainer").style.display = "none";
+            document.getElementById("registerContainer").style.display = "block";
+            document.getElementById("showRegisterFormBtn").style.display = "none"; // Hide the link
+        }
+
+        // Function to show login form and hide registration form
+        function showLoginForm() {
+            document.getElementById("registerContainer").style.display = "none";
+            document.getElementById("loginContainer").style.display = "block";
+            document.getElementById("showRegisterFormBtn").style.display = "block"; // Show the link
+        }
+    </script>
+
+    <script>
+        // Retrieve the current user's UID from localStorage
+        const uid = localStorage.getItem('uid');
+
+        if (uid) {
+            // If UID exists, fetch user data from Firestore
+            firestore.collection("users").doc(uid).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        // User data found, log it to the console
+                        const userData = doc.data();
+                        console.log("Current User:", userData);
+                    } else {
+                        console.log("User data not found");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error getting user data:", error);
+                });
+        } else {
+            console.log("No user logged in");
+        }
+    </script>
+
+</body>
+</html>

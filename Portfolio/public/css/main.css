@@ -1,0 +1,331 @@
+/* main.css */
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #dfdfdf;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1%;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left; /* Align the text to the left */
+    margin-left: 20px; /* Add margin to the left for spacing */
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Adjust main content padding */
+#main-content {
+    padding: 0 20px; /* Adjust as needed */
+}
+
+#introduction {
+    text-align: center; /* Center-align the text */
+    max-width: 800px; /* Set maximum width to 400px */
+    margin: 10px auto;
+    margin-top: 40px;
+    margin-bottom: 40px; /* Center the section horizontally */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    line-height: 1.5;
+}
+
+.profile-photo {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+}
+
+section {
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 35px;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 5px;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.4); /* Add box shadow */
+}
+
+h2 {
+    color: #333;
+    font-size: 20px;
+    margin-top: 0;
+    font-weight: 500;
+    text-align: center; /* Center-align the text */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    padding: 5px 0;
+    overflow-wrap: break-word; /* Wrap long words to the next line */
+    max-width: 300px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #666;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.project-container {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Wrap items to next line if they exceed container width */
+    justify-content: space-between; /* Distribute space between items */
+}
+
+.project-item {
+    font-size: larger;
+    width: 70%; /* Set width for each project item to 70% */
+    margin: 0 auto 50px; /* Center the project item and add margin bottom of 50px */
+    background-color: #f9f9f9; /* Background color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 20px; /* Padding inside each project item */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Add more noticeable box shadow */
+}
+
+.project-item .content {
+    text-align: center; /* Center-align the text content */
+}
+
+#projects-finished .project-container,
+#projects-ongoing .project-container {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Wrap items to next line if they exceed container width */
+    justify-content: space-between; /* Distribute space between items */
+}
+
+.project-item h3 {
+    margin-top: 0; /* Remove top margin for heading */
+}
+
+
+
+/* Add this CSS to your existing stylesheet or create a new one */
+
+/* Add this CSS to your existing stylesheet or create a new one */
+
+/* Style the media container */
+.media-container {
+    text-align: center;
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Wrap items to next line if they exceed container width */
+    justify-content: space-between; /* Distribute space between items */
+    margin-top: 30px; /* Add margin at the top */
+    margin-bottom: 30px;
+}
+
+/* Style individual media elements */
+.project-media {
+    width: 60%; /* Set width of each media element to 60% of parent container */
+    margin-bottom: 10px; /* Add margin between media elements */
+    box-sizing: border-box; /* Ensure padding and border are included in width calculation */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add box shadow */
+}
+
+/* Adjust the width of media elements for smaller screens */
+@media only screen and (max-width: 600px) {
+    .project-media {
+        width: 100%; /* Fill available width for media elements on smaller screens */
+    }
+}
+
+
+
+
+.technologies {
+    margin-bottom: 10px; /* Add margin between technologies */
+}
+
+.links {
+    margin-top: 20px; /* Add margin at the top for links */
+}
+
+.links a {
+    display: inline-block; /* Display links as block elements */
+    margin-right: 10px; /* Add margin between links */
+    color: #333; /* Link color */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.links a i {
+    margin-right: 5px; /* Add margin between icon and text */
+}
+
+.card-container {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Wrap items to next line if they exceed container width */
+    justify-content: space-between; /* Distribute space between items */
+}
+
+.card {
+    width: calc(25% - 20px); /* Set width for each card (adjust as needed) */
+    margin-bottom: 20px; /* Add margin between cards */
+    background-color: #fff; /* Background color */
+    padding: 20px; /* Padding inside each card */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add box shadow */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.card h3 {
+    margin-top: 0; /* Remove top margin for heading */
+}
+
+.card ul {
+    padding: 0; /* Remove default padding for ul */
+    margin: 0; /* Remove default margin for ul */
+}
+
+.card ul li {
+    padding: 5px 0; /* Add padding between list items */
+}
+
+#shareLink {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+
+/* Add this CSS to your existing stylesheet */
+
+/* Share modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Share modal content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Set the width to 50% */
+    max-width: 500px; /* Set a maximum width */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+#work-history li div strong {
+    font-weight: bold;
+}
+
+#work-history li div em {
+    font-style: italic;
+}
+
+
+
+
+
+/* main.css */
+
+/* Add this at the end of your existing CSS */
+
+/* Media queries for mobile devices */
+@media only screen and (max-width: 600px) {
+    header {
+        padding: 2%;
+    }
+
+    .logo {
+        text-align: center;
+        margin: 0;
+    }
+
+    #main-content {
+        padding: 0 10px; /* Adjust main content padding for smaller screens */
+    }
+
+    section {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .project-item,
+    .card {
+        width: 100%; /* Fill available width for project items and cards on smaller screens */
+    }
+
+    .project-item {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .card-container {
+        justify-content: center;
+    }
+
+    #shareLink {
+        width: calc(100% - 20px); /* Adjust for padding */
+    }
+
+    /* Share modal content for smaller screens */
+    .modal-content {
+        width: 80%;
+        max-width: 300px;
+    }
+}
+
+.banner {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: center; /* Center the background image */
+    background-size: cover; /* Cover the entire container with the background image */
+}

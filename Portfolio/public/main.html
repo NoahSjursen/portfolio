@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio Name</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="js/firebaseConfig.js"></script>
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Control Panel dropdown -->
+            <div class="dropdown control-panel-dropdown">
+                <button class="dropbtn"><i class="fas fa-cogs"></i> Control Panel</button>
+                <div class="dropdown-content">
+                    <a href="controlpanel.html"><i class="fas fa-cogs"></i> Control Panel</a>
+                    <a href="/public/index.html" class="login-btn">Login</a>
+                </div>
+            </div>
+            <!-- Logo -->
+            <div class="logo">Your Portfolio</div>
+            <!-- Navigation links -->
+            <ul class="nav-links">
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#aboutMe">About Me</a></li>
+                <li><a href="#projects-finished">Projects Finished</a></li>
+                <li><a href="#projects-ongoing">Projects Undergoing</a></li>
+            </ul>
+            <!-- Login button -->
+            <div class="mobile-buttons">
+                <button id="shareBtn"><i class="fas fa-share"></i>Share</button>
+            </div>
+            
+        </nav>
+        <style>
+            #shareBtn i {
+                margin-left: 30px;
+            }
+        </style>
+    </header>
+    
+    
+    
+    <!-- Share modal -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Share</h2>
+            <input type="text" id="shareLink" readonly>
+            <button id="copyBtn">Copy</button>
+        </div>
+    </div>
+
+    <div class="banner">
+        <section id="introduction" class="section">
+            <h2>Introduction</h2>
+            <p>Welcome to my portfolio website! Here you can find information about my professional work and the services I offer. Explore my projects and learn more about my approach to solving problems.</p>
+            <img src="" alt="Profile Photo" class="profile-photo">
+        </section>
+    </div>
+    
+  
+    
+
+    <h2>About Me</h2>
+    <section id="aboutMe" class="section">
+        <div class="card-container">
+            <div class="card">
+                <h3>Details</h3>
+                <ul>
+                    <li><strong>Full Name:</strong> <span id="full-name"></span></li>
+                    <li><strong>Age:</strong> <span id="age"></span></li>
+                    <li><strong>Country:</strong> <span id="country"></span></li>
+                    <li><strong>City:</strong> <span id="city"></span></li>
+                    <li><strong>Email:</strong> <span id="email"></span></li>
+                    <li><strong>Bio:</strong> <span id="bio"></span></li>
+                    <li><strong>Work Status:</strong> <span id="work-status"></span></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Skills</h3>
+                <ul id="skills">
+                    <!-- Skills will be dynamically added here -->
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Education</h3>
+                <ul id="education">
+                    <!-- Education details will be dynamically added here -->
+                </ul>
+            </div>            
+            <div class="card">
+                <h3>Work History</h3>
+                <ul id="work-history">
+                    <!-- Work history details will be dynamically added here -->
+                </ul>
+            </div>            
+            <div class="card">
+                <h3>Certificates</h3>
+                <ul id="certificates">
+                    <!-- Certificate details will be dynamically added here -->
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Social Links</h3>
+                <ul id="social-links">
+                    <!-- Social links will be dynamically added here -->
+                </ul>
+            </div>            
+
+        </div>
+    </section>
+    
+
+    <h2>Projects Finished</h2>
+    <section id="projects-finished" class="section">
+        <div class="project-container" id="finished-projects-container">
+            <!-- Projects finished will be dynamically added here -->
+        </div>
+    </section>
+    
+    <h2>Projects Undergoing</h2>
+    <section id="projects-ongoing" class="section">
+        <div class="project-container" id="ongoing-projects-container">
+            <!-- Projects ongoing will be dynamically added here -->
+        </div>
+    </section>
+    
+    <footer>
+        <p>Contact me at <a href="mailto:your.test@example.com">your.email@example.com</a></p>
+    </footer>
+
+    <script>
+        // Function to remove the share button if URL parameter is present
+        function removeShareButtonIfUrlPresent() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('uid')) {
+                const shareBtn = document.getElementById('shareBtn');
+                if (shareBtn) {
+                    shareBtn.style.display = 'none';
+                }
+            }
+        }
+    
+        // Call the function when the page loads
+        removeShareButtonIfUrlPresent();
+    </script>
+</body>
+<script src="js/login.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/Main/displayPersonalDetailsMain.js"></script>
+<script src="js/Main/DisplayProjectsMain.js"></script>
+<script>
+    // Retrieve the current user's UID from localStorage
+    const uid = localStorage.getItem('uid');
+
+    if (uid) {
+        // If UID exists, fetch user data from Firestore
+        firestore.collection("users").doc(uid).get()
+            .then((doc) => {
+                if (doc.exists) {
+                    // User data found, log it to the console
+                    const userData = doc.data();
+                    console.log("Current User:", userData);
+                    // Display projects when user data is retrieved
+                    fetchProjects();
+                } else {
+                    console.log("User data not found");
+                }
+            })
+            .catch((error) => {
+                console.error("Error getting user data:", error);
+            });
+    } else {
+        console.log("No user logged in");
+    }
+</script>
+</html>

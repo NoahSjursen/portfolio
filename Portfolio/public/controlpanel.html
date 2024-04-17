@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel</title>
+    <!-- Include CSS files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/controlpanel.css"> <!-- Add control panel CSS -->
+    <!-- Include Google Fonts and Font Awesome -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+
+    <script src="js/firebaseConfig.js"></script>
+    <script src="js/auth.js"></script>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Control Panel Actions Dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown()">Menu <i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="goToMainPage(); closeDropdown()">Home</a>
+                    <a href="#" id="create-project-btn" onclick="toggleDisplay('create-project'); closeDropdown()">Create Project</a>
+                    <a href="#" id="edit-personal-btn" onclick="toggleDisplay('edit-personal-page'); closeDropdown()">Edit Personal Details</a>
+                    <a href="#" id="edit-education-btn" onclick="toggleDisplay('edit-education'); closeDropdown()">Edit Education</a>
+                    <a href="#" id="edit-work-history-btn" onclick="toggleDisplay('edit-work-history'); closeDropdown()">Edit Work History</a>
+                    <a href="#" id="edit-certificates-btn" onclick="toggleDisplay('edit-certificates'); closeDropdown()">Edit Certificates</a>
+                    <a href="#" id="edit-skills-btn" onclick="toggleDisplay('edit-skills'); closeDropdown()">Edit Skills</a>
+                    <a href="#" id="edit-skills-btn" onclick="toggleDisplay('edit-social-media'); closeDropdown()">Edit Social Links</a>
+                </div>
+            </div>
+            <!-- Logo -->
+            <div class="logo">Control Panel</div>
+            <!-- Logout Button -->
+            <div class="logout">
+                <button class="logout-btn">Logout</button>
+            </div>
+        </nav>
+    </header>
+    <script>
+        // JavaScript functions
+        function goToMainPage() {
+            window.location.href = 'main.html';
+        }
+        function toggleDisplay(id) {
+            var element = document.getElementById(id);
+            element.style.display = (element.style.display === 'block' ? 'none' : 'block');
+        }
+    </script>
+        <section id="introduction" class="section">
+            <h2>Control Panel</h2>
+            <p>This is your control panel. Here you can use the Menu in the navigation to change details about your portfolio!</p>
+        </section>
+
+
+        <!-- Edit Personal Page Section -->
+        <section id="edit-personal-page" class="section" style="display: none;">
+            <h2>Edit Personal Page</h2>
+            <form id="edit-personal-page-form">
+                <label for="bio">BIO:</label><br>
+                <textarea id="bio" name="bio" rows="4" cols="50"></textarea><br>
+                
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br>
+
+                <label for="age">Age:</label><br>
+                <input type="number" id="age" name="age"><br>
+
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email"><br>
+                
+                <label for="work-status">Work Status:</label><br>
+                <select id="work-status" name="work-status">
+                    <option value="employed">Employed</option>
+                    <option value="student">Student</option>
+                    <option value="unemployed">Unemployed</option>
+                    <option value="freelancer">Freelancer</option>
+                    <option value="business-owner">Business Owner</option>
+                </select><br>
+                
+                <label for="workplace">Workplace:</label><br>
+                <input type="text" id="workplace" name="workplace"><br>
+                
+                <label for="portfolio-introduction">Portfolio Introduction Text:</label><br>
+                <textarea id="portfolio-introduction" name="portfolio-introduction" rows="4" cols="50"></textarea><br>
+                
+                <label for="country">Country:</label><br>
+                <input type="text" id="country" name="country"><br>
+                
+                <label for="city">City:</label><br>
+                <input type="text" id="city" name="city"><br>
+                <label for="banner-image">Banner Image:</label><br>
+                <input type="file" id="banner-image" name="banner-image" accept="image/*"><br>
+                
+                <label for="profile-picture">Profile Picture:</label><br>
+                <input type="file" id="profile-picture" name="profile-picture" accept="image/*"><br>
+                <button type="submit" onclick="document.getElementById('edit-personal-page').style.display = 'none';">Save Changes</button>
+                <button type="button" class="cancel-btn" onclick="document.getElementById('edit-personal-page').style.display = 'none';">Close</button>
+            </form>
+        </section>
+
+                <!-- Edit Certificates Section -->
+                <section id="edit-certificates" class="section" style="display: none;">
+                    <h2>Edit Certificates</h2>
+                    <form id="edit-certificates-form">
+                        <!-- Certificates List -->
+                        <ul id="certificates-list"></ul>
+                        <br>
+                        <!-- Input fields for editing certificates -->
+                        <label for="certificates">Certificates:</label><br>
+                        <input type="text" id="certificates" name="certificates"><br>
+                        
+                        <!-- Other input fields for editing certificates -->
+                        
+                        <!-- Submit and Cancel Buttons -->
+                        <button type="submit">Save Changes</button>
+                        <button type="button" class="cancel-btn" onclick="hideEditForm('edit-certificates')">Close</button>
+                    </form>
+                </section>
+                <!-- Edit Work History Section -->
+                <section id="edit-work-history" class="section" style="display: none;">
+                    <h2>Edit Work History</h2>
+                    <form id="edit-work-history-form">
+                        <!-- Work History List -->
+                        <ul id="work-history-list"></ul>
+                        <br>
+                        <!-- Input fields for editing work history -->
+                        <label for="work-history-title">Title:</label><br>
+                        <input type="text" id="work-history-title" name="work-history-title"><br>
+                        
+                        <label for="work-history-company">Company:</label><br>
+                        <input type="text" id="work-history-company" name="work-history-company"><br>
+                        
+                        <label for="work-history-duration">Duration:</label><br>
+                        <input type="text" id="work-history-duration" name="work-history-duration"><br>
+                        
+                        <!-- Other input fields for editing work history -->
+                        
+                        <!-- Submit and Cancel Buttons -->
+                        <button type="submit">Save Changes</button>
+                        <button type="button" class="cancel-btn" onclick="hideEditForm('edit-work-history')">Close</button>
+                    </form>
+                </section>
+                
+
+                <!-- Edit Skills Section -->
+                <section id="edit-skills" class="section" style="display: none;">
+                    <h2>Edit Skills</h2>
+                    <form id="edit-skills-form">
+                        <!-- Skills List -->
+                        <ul id="skills-list"></ul>
+                        <br>
+                        <!-- Input fields for editing skills -->
+                        <label for="skills">Skills:</label><br>
+                        <input type="text" id="skills" name="skills"><br>
+                        
+                        <!-- Other input fields for editing skills -->
+                        
+                        <!-- Submit and Cancel Buttons -->
+                        <button type="submit">Save Changes</button>
+                        <button type="button" class="cancel-btn" onclick="hideEditForm('edit-skills')">Close</button>
+                    </form>
+                </section>
+
+                <!-- Edit Education Section -->
+                <section id="edit-education" class="section" style="display: none;">
+                    <h2>Edit Education</h2>
+                    <form id="edit-education-form">
+                        <!-- Education List -->
+                        <ul id="education-list"></ul>
+                        <br>
+                        <!-- Input fields for editing education -->
+                        <label for="education">Education:</label><br>
+                        <input type="text" id="education" name="education"><br>
+                        
+                        <!-- Other input fields for editing education -->
+                        
+                        <!-- Submit and Cancel Buttons -->
+                        <button type="submit">Save Changes</button>
+                        <button type="button" class="cancel-btn" onclick="hideEditForm('edit-education')">Close</button>
+                    </form>
+                </section>
+
+                <!-- Edit Social Media Section -->
+                <section id="edit-social-media" class="section" style="display: none;">
+                    <h2>Edit Social Media Links</h2>
+                    <form id="edit-social-media-form">
+                        <!-- Social Media Links List -->
+                        <ul id="social-media-list"></ul>
+                        <br>
+                        <!-- Input fields for editing social media links -->
+                        <label for="social-media">Social Media Link:</label><br>
+                        <input type="text" id="social-media" name="social-media"><br>
+                        <!-- Other input fields for editing social media links -->
+                        <!-- Submit and Cancel Buttons -->
+                        <button type="submit">Save Changes</button>
+                        <button type="button" class="cancel-btn" onclick="hideEditForm('edit-social-media')">Close</button>
+                    </form>
+                </section>
+
+        
+        <!-- Create Project Section -->
+        <section id="create-project" class="section" style="display: none;">
+            <h2>Create Project</h2>
+            <form id="create-project-form">
+                <label for="project-name">Project Name:</label><br>
+                <input type="text" id="project-name" name="project-name"><br>
+                
+                <label for="project-description">Project Description:</label><br>
+                <textarea id="project-description" name="project-description" rows="4" cols="50"></textarea><br>
+                
+                <div id="media-inputs-container">
+                    <label for="project-media">Add Media:</label><br>
+                    <input type="file" class="media-upload" accept="image/*, video/*"><br>
+                </div>
+        
+                <!-- Button to add more media inputs -->
+                <button type="button" id="add-media-btn">Add Another Media</button><br>
+                
+                <label for="project-links">Project Links:</label><br>
+                <input type="text" id="project-links" name="project-links"><br>
+                
+                <label for="project-status">Project Status:</label><br>
+                <select id="project-status" name="project-status">
+                    <option value="ongoing">Ongoing</option>
+                    <option value="finished">Finished</option>
+                    <option value="suspended">Suspended</option>
+                </select><br>
+                
+                <label for="project-date">Completion Date:</label><br>
+                <input type="date" id="project-date" name="project-date"><br>
+                
+                <label for="project-notes">Additional Notes:</label><br>
+                <textarea id="project-notes" name="project-notes" rows="4" cols="50"></textarea><br>
+                
+                <button type="submit" onclick="document.getElementById('create-project').style.display = 'none';">Create Project</button>
+                <button type="button" class="cancel-btn" onclick="document.getElementById('create-project').style.display = 'none';">Cancel</button>
+            </form>
+        </section>
+
+        <!-- Display Projects Section -->
+        <section id="display-projects" class="section hidden">
+            <h2>Projects</h2>
+            <div id="project-list">
+                <!-- Project items will be dynamically added here -->
+            </div>
+        </section>
+
+
+        <!-- Edit Project Form (hidden by default) -->
+        <section id="edit-project-form" class="section hidden" style="display: none;">
+            <h2>Edit Project</h2>
+            <form>
+                <label for="edit-project-name">Project Name:</label><br>
+                <input type="text" id="edit-project-name" name="edit-project-name"><br>
+
+                <label for="edit-project-description">Project Description:</label><br>
+                <textarea id="edit-project-description" name="edit-project-description" rows="4" cols="50"></textarea><br>
+
+                <label for="edit-project-status">Project Status:</label><br>
+                <select id="edit-project-status" name="edit-project-status">
+                    <option value="ongoing">Ongoing</option>
+                    <option value="finished">Finished</option>
+                    <option value="suspended">Suspended</option>
+                </select><br>
+
+                <label for="edit-project-date">Completion Date:</label><br>
+                <input type="date" id="edit-project-date" name="edit-project-date"><br>
+
+                <label for="edit-project-links">Project Links:</label><br>
+                <textarea id="edit-project-links" name="edit-project-links" rows="4" cols="50"></textarea><br>
+                
+                <div id="edit-media-inputs-container">
+                    <!-- Media inputs will be dynamically added here -->
+                </div>
+                
+                <!-- Button to add more media inputs in the edit project form -->
+                <button type="button" id="add-media-btn-edit">Add Another Media</button><br>
+
+                <label for="edit-project-notes">Additional Notes:</label><br>
+                <textarea id="edit-project-notes" name="edit-project-notes" rows="4" cols="50"></textarea><br>
+
+                <!-- Media list for existing media URLs -->
+                <ul id="media-list-edit">
+                    <!-- Media list items will be dynamically added here -->
+                </ul>
+
+                <button type="submit">Save Changes</button>
+                <button type="button" class="cancel-btn">Close</button>
+            </form>
+        </section>
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact me at <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    </footer>
+
+    <!-- Include JavaScript files -->
+    <script src="js/ControlPanel/editPersonalPage.js"></script>
+
+    <script src="js/ControlPanel/createProject.js"></script>
+    <script src="js/ControlPanel/displayEditProjects.js"></script>
+
+    <script src="js/ControlPanel/editSkills.js"></script>
+    <script src="js/ControlPanel/displayEditSkills.js"></script>
+
+    <script src="js/ControlPanel/editCertificates.js"></script>
+    <script src="js/ControlPanel/displayEditCertificates.js"></script>
+
+    <script src="js/ControlPanel/editEducation.js"></script>
+    <script src="js/ControlPanel/displayEditEducation.js"></script>
+
+    <script src="js/ControlPanel/editSocialLinks.js"></script>
+    <script src="js/ControlPanel/displayEditSocialLinks.js"></script>
+
+    <script src="js/ControlPanel/editWorkHistory.js"></script>
+    <script src="js/ControlPanel/displayEditWorkHistory.js"></script>
+
+
+    <script>
+        // Retrieve the current user's UID from localStorage
+        const uid = localStorage.getItem('uid');
+    
+        if (uid) {
+            // If UID exists, fetch user data from Firestore
+            firestore.collection("users").doc(uid).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        // User data found, log it to the console
+                        const userData = doc.data();
+                        console.log("Current User:", userData);
+                    } else {
+                        console.log("User data not found");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error getting user data:", error);
+                });
+        } else {
+            console.log("No user logged in");
+        }
+    </script>
+
+    <script>
+        // Function to redirect to login page
+        function redirectToLogin() {
+            window.location.href = '/public/index.html'; // Change this to your login page URL
+        }
+
+        // Listen for authentication state changes
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                // If user is not logged in, redirect to login page
+                redirectToLogin();
+            } else {
+                // Retrieve the current user's UID from localStorage
+                const uid = localStorage.getItem('uid');
+            
+                if (uid) {
+                    // If UID exists, fetch user data from Firestore
+                    firestore.collection("users").doc(uid).get()
+                        .then((doc) => {
+                            if (doc.exists) {
+                                // User data found, log it to the console
+                                const userData = doc.data();
+                                console.log("Current User:", userData);
+                            } else {
+                                console.log("User data not found");
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Error getting user data:", error);
+                        });
+                } else {
+                    console.log("No user logged in");
+                }
+            }
+        });
+    </script>
+
+    <script>
+        // Toggle the dropdown when the dropdown button is clicked
+        function toggleDropdown() {
+            var dropdownContent = document.querySelector('.dropdown-content');
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+            } else {
+                dropdownContent.style.display = 'block';
+            }
+        }
+
+        // Close the dropdown when any dropdown content item is clicked
+        function closeDropdown() {
+            document.querySelector('.dropdown-content').style.display = 'none';
+        }
+
+        // Your other JavaScript functions
+    </script>
+
+</body>
+</html>

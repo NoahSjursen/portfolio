@@ -1,0 +1,178 @@
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: auto; /* Pushes the logo to the left */
+}
+
+.nav-links {
+    list-style: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li:last-child {
+    margin-right: 0;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.login {
+    margin-left: auto; /* Pushes the login button to the right */
+}
+
+.login-btn {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Dropdown Button */
+.dropdown {
+    position: relative;
+    margin-left: 20px; /* Add margin to separate it from other links */
+}
+
+.dropbtn {
+    font-family: 'Raleway', sans-serif;
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.dropbtn:hover {
+    background-color: #444;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    text-align: left;
+}
+
+/* Links inside the Dropdown */
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f5f5;
+}
+
+/* Show the Dropdown Menu on Hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Style the Menu Button Icon */
+.dropbtn i {
+    margin-right: 8px;
+}
+
+/* Share Button */
+#shareBtn {
+    font-family: 'Raleway', sans-serif;
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    margin-right: 20px; /* Add margin to separate it from other links */
+}
+
+#shareBtn:hover {
+    background-color: #444;
+}
+
+#shareBtn i {
+    margin-right: 8px;
+}
+
+/* CSS for mobile */
+@media only screen and (max-width: 600px) {
+    .nav-links, .dropdown.control-panel-dropdown {
+        display: none;
+    }
+
+    .mobile-buttons {
+        display: flex; /* Display mobile buttons */
+        align-items: center; /* Align items vertically */
+        justify-content: space-between; /* Add space between buttons */
+        margin-right: 20px; /* Add some spacing between the buttons */
+    }
+
+    .dropdown.control-panel-dropdown {
+        display: flex; /* Display control panel dropdown */
+        align-items: center; /* Align items vertically */
+        margin-right: 20px; /* Add some spacing between the buttons */
+    }
+}
+
+
+
+
+/* Action Menu */
+.action-menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Pushes the action menu to the right */
+}
+
+.action-menu button {
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-right: 20px; /* Add margin to separate buttons */
+    transition: background-color 0.3s;
+}
+
+.action-menu button:hover {
+    background-color: #444;
+}

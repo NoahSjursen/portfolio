@@ -1,0 +1,122 @@
+/* Body */
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    color: #fff;
+    background-color: #666;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-wrap: break-word; /* Ensure text wraps when it reaches container's edge */
+}
+
+
+.section h2 {
+    color: #333;
+    font-size: 20px;
+    margin-top: 0;
+    font-weight: 500;
+}
+
+/* Form elements */
+form {
+    margin-top: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+textarea,
+input[type="text"],
+input[type="file"],
+select {
+    width: calc(100% - 22px); /* Adjusted width */
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.project-item {
+    margin-bottom: 20px;
+}
+
+.project-item button {
+    margin-left: 10px;
+}
+
+/* Footer */
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #666;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content container */
+.main-content {
+    flex: 1;
+    padding: 20px; /* Adjust as needed */
+}
+
+
